@@ -111,3 +111,10 @@ dist
 
 # TernJS port file
 .tern-port
+
+
+### ANGULAR frontend
+frontend/.angular
+frontend/.gemini
+frontend/.github
+frontend/.vscode

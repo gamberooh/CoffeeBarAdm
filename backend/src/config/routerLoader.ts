@@ -19,7 +19,7 @@ export function getModuleRouters(): RouteModule[] {
     if (entry.isDirectory()) {
       const dirPath = path.join(routerDir, entry.name);
       const files = fs.readdirSync(dirPath);
-      const routerFile = files.find(f => f.endsWith('.router.ts') || f.endsWith('.router.js'));
+      const routerFile = files.find(f => f.endsWith('.router.ts'));
       if (routerFile) {
         routers.push({
           name: entry.name,
@@ -27,8 +27,8 @@ export function getModuleRouters(): RouteModule[] {
           routePrefix: `/api/${entry.name}`
         });
       }
-    } else if (entry.isFile() && (entry.name.endsWith('.router.ts') || entry.name.endsWith('.router.js'))) {
-      const modName = entry.name.replace(/\.router\.(ts|js)$/, '');
+    } else if (entry.isFile() && entry.name.endsWith('.router.ts')) {
+      const modName = entry.name.replace(/\.router\.(ts)$/, '');
       routers.push({
         name: modName,
         filePath: path.join(routerDir, entry.name),

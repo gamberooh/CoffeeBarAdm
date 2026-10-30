@@ -15,7 +15,8 @@ export default function setupMiddlewares(app: Express): void {
 
   // CORS
   const allowedOrigins = [
-    'http://localhost:4200', //frontend angular
+    // 'http://localhost:4200', //angular default
+    'http://localhost:35841', //frontend angular
     'http://localhost:8000' //backend
   ];
 
