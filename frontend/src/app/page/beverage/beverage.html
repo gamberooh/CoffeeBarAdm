@@ -1,1 +1,34 @@
-<p>beverage works!</p>
+<main class="mx-auto flex w-full max-w-5xl flex-col gap-6 px-4 py-8">
+  <header class="flex flex-col gap-2">
+    <h1 class="text-3xl font-bold text-primary">Bevande</h1>
+    <p class="text-slate-700">Esplora il catalogo o cerca una bevanda per nome.</p>
+  </header>
+
+  <div class="flex flex-col gap-2">
+    <label for="beverage-search" class="font-medium">Cerca per nome</label>
+    <input
+      id="beverage-search"
+      type="search"
+      [formControl]="searchControl"
+      placeholder="Es. cappuccino"
+      class="w-full rounded-lg border border-slate-300 px-4 py-3 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary"
+    />
+  </div>
+
+  @if (loading()) {
+    <p role="status" class="text-slate-700">Caricamento bevande…</p>
+  } @else if (error(); as message) {
+    <p role="alert" class="text-red-700">{{ message }}</p>
+  } @else if (beverages().length === 0) {
+    <p class="text-slate-700">Nessuna bevanda trovata.</p>
+  } @else {
+    <section class="grid grid-cols-1 gap-4" aria-label="Elenco bevande">
+      @for (beverage of beverages(); track beverage.id) {
+        <app-card
+          [title]="beverage.name"
+          [description]="describe(beverage)"
+        />
+      }
+    </section>
+  }
+</main>
