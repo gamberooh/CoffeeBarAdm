@@ -1,0 +1,51 @@
+<!-- src/app/shared/components/product-card/product-card.component.html -->
+<article class="bg-[#F4F1DE] rounded-xl border-[1.5px] border-[#272728] shadow-[0px_4px_0px_#272728] flex flex-col justify-between overflow-hidden group hover:-translate-y-1 transition-transform">
+  <div>
+    <div class="p-4 pb-0">
+      <div class="relative w-full h-48 rounded-xl border-[1.5px] border-[#272728] bg-surface-container overflow-hidden">
+        <img [src]="product().imageUrl" [alt]="product().title" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" />
+        
+        <div class="absolute top-2.5 left-2.5">
+          <span [class]="product().isAlcoholic ? 'bg-[#E76F51]' : 'bg-secondary'" class="text-white text-label-sm px-2.5 py-0.5 rounded-full border border-[#272728] shadow-sm flex items-center gap-1 font-bold">
+            <span class="material-symbols-outlined text-[14px]">{{ product().isAlcoholic ? 'local_bar' : 'spa' }}</span>
+            {{ product().isAlcoholic ? 'Alcoholic: Yes' : 'Alcoholic: No' }}
+          </span>
+        </div>
+
+        <span class="absolute top-2.5 right-2.5 bg-surface text-primary text-headline-md font-extrabold px-3 py-0.5 rounded-full border border-[#272728] shadow-[0px_2px_0px_#272728]">
+          ${{ product().price.toFixed(2) }}
+        </span>
+      </div>
+    </div>
+
+    <div class="p-4 space-y-2.5">
+      <div class="flex items-center justify-between">
+        <span class="text-label-sm text-secondary font-bold uppercase tracking-wider">{{ product().categoryLabel }}</span>
+        <div class="flex items-center gap-1 text-[#D4A373]">
+          <span class="material-symbols-outlined text-[16px]">star</span>
+          <span class="text-label-sm text-primary font-bold">{{ product().rating }} ({{ product().reviewCount }})</span>
+        </div>
+      </div>
+
+      <h3 class="text-headline-md font-bold text-primary group-hover:text-secondary transition-colors">{{ product().title }}</h3>
+      <p class="text-body-sm text-on-surface-variant line-clamp-2">{{ product().description }}</p>
+
+      <div class="flex flex-wrap gap-1.5 pt-1">
+        @for (allergen of product().allergens; track allergen.id) {
+          <span [class]="allergen.isWarning ? 'bg-[#E76F51]/10 text-primary border-[#E76F51]' : 'bg-surface text-primary border-[#272728]/20'" class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-label-sm border">
+            {{ allergen.label }}
+          </span>
+        }
+      </div>
+    </div>
+  </div>
+
+  <div class="p-4 pt-0 flex items-center gap-2">
+    <button (click)="viewDetails.emit(product())" class="flex-1 py-2 px-3 rounded-full bg-surface border border-[#272728] text-label-md font-bold text-primary hover:bg-surface-container active:translate-y-0.5 transition-all">
+      View Details
+    </button>
+    <button (click)="addToCart.emit(product())" class="py-2 px-4 rounded-full bg-primary-container text-surface-container border border-[#272728] shadow-[0px_3px_0px_#272728] text-label-md font-bold flex items-center gap-1 active:translate-y-0.5 transition-all">
+      <span class="material-symbols-outlined text-[18px]">add</span> Add
+    </button>
+  </div>
+</article>
