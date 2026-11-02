@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { CartService } from '../../../core/services/cart.service';
 @Component({
-  selector: 'app-cart-tray.component',
+  selector: 'app-cart-tray',
   imports: [],
   templateUrl: './cart-tray.component.html',
   styleUrl: './cart-tray.component.css',

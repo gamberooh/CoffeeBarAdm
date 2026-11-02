@@ -2,7 +2,7 @@ import { Component, inject, input } from '@angular/core';
 import { CartService } from '../../core/services/cart.service';
 
 @Component({
-  selector: 'app-header.component',
+  selector: 'app-header',
   imports: [],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css',

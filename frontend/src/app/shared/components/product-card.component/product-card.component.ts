@@ -1,8 +1,8 @@
 import { Component, input, output } from '@angular/core';
-import { ProductResponse } from '../../../core/models/product.model';
+import type { ProductResponse } from '../../../core/models/product.model';
 
 @Component({
-  selector: 'app-product-card.component',
+  selector: 'app-product-card',
   imports: [],
   templateUrl: './product-card.component.html',
   styleUrl: './product-card.component.css',

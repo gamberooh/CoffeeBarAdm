@@ -10,8 +10,8 @@
     [categories]="categories()" 
     [activeCategory]="selectedCategory()"
     (categoryChange)="selectedCategory.set($event)"
-    (searchChange)="searchQuery.set($event)"
-    (nonAlcoholicToggle)="nonAlcoholicOnly.set($event)" />
+    (searchChange)="searchQuery.set($event)" />
+    <!-- (nonAlcoholicToggle)="nonAlcoholicOnly.set($event)"  -->
 
   <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
     @for (product of filteredProducts(); track product.id) {

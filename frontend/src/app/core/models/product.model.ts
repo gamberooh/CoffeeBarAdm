@@ -49,6 +49,13 @@ export interface ProductRequest {
   allergens: Allergen[];  
 }
 
+export interface CategoryFilter {
+  id: CategoryId;
+  label: string;
+  icon: string;
+  count: number;
+}
+
 // export interface Product {
 //   id: string;
 //   title: string;
@@ -74,11 +81,18 @@ export interface ProductRequest {
 //   };
 //   ingredients?: Ingredient[];
 //   customizationGroups?: ProductCustomizationGroup[];
+    // isFavorite?: boolean;
+    // reviews?: ProductReview[];
+    // relatedProducts?: Product[]; // Prodotti per la sezione "Pairs Deliciously With"
 // }
 
-export interface CategoryFilter {
-  id: CategoryId;
-  label: string;
-  icon: string;
-  count: number;
-}
+
+// export interface ProductReview {
+//   id: string;
+//   author: string;
+//   isVerified: boolean;
+//   rating: number;
+//   text: string;
+// }
+
+

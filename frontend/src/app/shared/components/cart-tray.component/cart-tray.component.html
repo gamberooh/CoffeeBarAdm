@@ -14,7 +14,7 @@
         </div>
 
         <div class="space-y-3 overflow-y-auto max-h-[60vh] pr-1">
-          @for (item of cartService.items(); track item.id) {
+          @for (item of cartService.cartItems(); track item.id) {
             <div class="bg-surface rounded-xl border border-[#272728] p-3 flex gap-3 items-center justify-between">
               <div class="flex items-center gap-3">
                 <img [src]="item.product.imageUrl" [alt]="item.product.title" class="w-14 h-14 rounded-lg border border-[#272728] object-cover" />
