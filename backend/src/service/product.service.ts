@@ -1,41 +1,47 @@
 import type { IBeverageDocument } from '../model/Beverage';
 import mongoose from 'mongoose';
 import Beverage from '../model/Beverage';
-import type { BeverageRequest, BeverageResponse } from "../model/dto/beverage.dto";
+import type { ProductRequest, ProductResponse } from '../model/dto/product.dto';
 
 type BeverageRecord = Pick<
     IBeverageDocument,
-    'name' | 'description' | 'price' | 'alcoholic' | 'ingredients'
+    'title' | 'description' | 'price' | 'imageUrl' | 'category' |
+    'categoryLabel' | 'ingredients' | 'allergens'
 > & {
     _id: mongoose.Types.ObjectId;
-    __v?: number;
 };
 
-export class BeverageService {
+export class ProductService {
     /**
-     * Mapper privato per trasformare in modo sicuro i POJO/Documenti Mongoose in BeverageResponse DTO.
+     * Mapper privato per trasformare in modo sicuro i POJO/Documenti Mongoose in ProductResponse DTO.
      * Garantisce l'isolamento del tipo di persistenza (_id) dal tipo di risposta API (id).
      */
-    private static mapToResponse(doc: BeverageRecord): BeverageResponse {
-        const { _id, __v, ...rest } = doc;
+    private static mapToResponse(doc: BeverageRecord): ProductResponse {
         return {
-            id: _id.toString(),
-            ...rest
+            id: doc._id.toString(),
+            title: doc.title,
+            description: doc.description,
+            price: doc.price,
+            imageUrl: doc.imageUrl,
+            category: doc.category,
+            categoryLabel: doc.categoryLabel,
+            ingredients: doc.ingredients,
+            allergens: doc.allergens
         };
     }
 
     /**
-     * Recupera tutte le bevande.
+     * Recupera tutti i prodotti.
      */
-    static async getAll(): Promise<BeverageResponse[]> {
+    static async getAll(): Promise<ProductResponse[]> {
         const docs = await Beverage.find().lean().exec();
         return docs.map(doc => this.mapToResponse(doc));
     }
 
     /**
-     * Recupera una singola bevanda tramite l'ID.
+     * Recupera un prodotto tramite ID.
      */
-    static async getById(id: string): Promise<BeverageResponse | null> {
+    static async getById(id: string): Promise<ProductResponse | null> {
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return null;
         }
@@ -45,17 +51,17 @@ export class BeverageService {
     }
 
     /**
-     * Recupera una singola bevanda tramite il nome esatto.
+     * Recupera un prodotto tramite titolo esatto.
      */
-    static async getByName(name: string): Promise<BeverageResponse | null> {
-        const doc = await Beverage.findOne({ name }).lean().exec();
+    static async getByName(title: string): Promise<ProductResponse | null> {
+        const doc = await Beverage.findOne({ title }).lean().exec();
         return doc ? this.mapToResponse(doc) : null;
     }
 
     /**
-     * Esegue una ricerca case-insensitive per nome.
+     * Esegue una ricerca case-insensitive per titolo.
      */
-    static async searchByName(queryText: string): Promise<BeverageResponse[]> {
+    static async searchByName(queryText: string): Promise<ProductResponse[]> {
         const trimmed = queryText?.trim();
         if (!trimmed) {
             return [];
@@ -63,7 +69,7 @@ export class BeverageService {
 
         const safeSearchTerm = trimmed.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
         const filter = {
-            name: { $regex: safeSearchTerm, $options: 'i' }
+            title: { $regex: safeSearchTerm, $options: 'i' }
         };
 
         const docs = await Beverage.find(filter).lean().exec();
@@ -71,18 +77,18 @@ export class BeverageService {
     }
 
     /**
-     * Crea un nuovo record di bevanda.
+     * Crea un nuovo prodotto.
      */
-    static async create(payload: BeverageRequest): Promise<BeverageResponse> {
+    static async create(payload: ProductRequest): Promise<ProductResponse> {
         const created = await Beverage.create(payload);
         const rawObject = created.toObject();
         return this.mapToResponse(rawObject);
     }
 
     /**
-     * Aggiorna una bevanda esistente.
+     * Aggiorna un prodotto esistente.
      */
-    static async update(id: string, payload: BeverageRequest): Promise<BeverageResponse | null> {
+    static async update(id: string, payload: ProductRequest): Promise<ProductResponse | null> {
         if (!mongoose.Types.ObjectId.isValid(id)) {
             return null;
         }
@@ -97,7 +103,7 @@ export class BeverageService {
     }
 
     /**
-     * Elimina una bevanda tramite ID.
+     * Elimina un prodotto tramite ID.
      */
     static async deleteById(id: string): Promise<boolean> {
         if (!mongoose.Types.ObjectId.isValid(id)) {

@@ -23,7 +23,7 @@ export class CartService {
     }
   });
 
-  onAddToCart(product: ProductResponse, quantity = 1): void {
+  addToCart(product: ProductResponse, quantity = 1): void {
     this.cartItems.update((current) => {
       const existringIndex = current.findIndex(i => i.product.id === product.id);
       if (existringIndex < -1) {
@@ -36,7 +36,7 @@ export class CartService {
   }
 
   //delta could be positive or negative
-  onUpdateQuantity(itemId: string, delta: number): void {
+  updateQuantity(itemId: string, delta: number): void {
     this.cartItems.update(current => 
       current
         .map(item => item.id === itemId ? { ...item, quantity: item.quantity + delta } : item)

@@ -1,18 +1,18 @@
 import { Router } from 'express';
-import { BeverageController } from '../controller/beverage.controller';
+import { ProductController } from '../controller/product.controller';
 
 const router = Router();
 
 // GET
-router.get('/', BeverageController.getAll);
-router.get('/search', BeverageController.searchByName);
-router.get('/by-name/:name', BeverageController.getByName);
-router.get('/:id', BeverageController.getById);
+router.get('/', ProductController.getAll);
+router.get('/search', ProductController.searchByName);
+router.get('/by-name/:name', ProductController.getByName);
+router.get('/:id', ProductController.getById);
 
 // POST, PUT, DELETE
-router.post('/', BeverageController.create);
-router.put('/:id', BeverageController.update);
-router.delete('/:id', BeverageController.deleteById);
+router.post('/', ProductController.create);
+router.put('/:id', ProductController.update);
+router.delete('/:id', ProductController.deleteById);
 
 export { router };
 export default router;

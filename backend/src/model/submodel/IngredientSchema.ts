@@ -1,10 +1,29 @@
 import mongoose from 'mongoose';
-import AllergenSchema from './AllergenSchema';
 
-const IngredientSchema = new mongoose.Schema({
-    name: String,
-    brand: String,
-    allergens: [AllergenSchema]
+export interface IBeverageIngredient {
+    id: string;
+    name: string;
+    description: string;
+    brand: string;
+}
+
+const IngredientSchema = new mongoose.Schema<IBeverageIngredient>({
+    id: {
+        type: String,
+        required: true
+    },
+    name: {
+        type: String,
+        required: true
+    },
+    description: {
+        type: String,
+        required: true
+    },
+    brand: {
+        type: String,
+        required: true
+    }
 }, { _id: false });
 
 export { IngredientSchema };

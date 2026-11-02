@@ -1,25 +1,22 @@
-const mongoose = require('mongoose');
+import mongoose from 'mongoose';
 
-const AllergenSchema = new mongoose.Schema({
-    category: {
+export interface IBeverageAllergen {
+    id: string;
+    label: string;
+    isWarning?: boolean;
+}
+
+const AllergenSchema = new mongoose.Schema<IBeverageAllergen>({
+    id: {
         type: String,
-        required: true,
-        enum: [
-            'gluten',       // Cereals containing gluten (wheat, rye, barley, oats)
-            'crustaceans',  // Prawns, crabs, lobster, crayfish
-            'eggs',
-            'fish',
-            'peanuts',
-            'soy',          // Soybeans
-            'milk',         // Dairy (including lactose)
-            'tree_nuts',    // Almonds, walnuts, cashews, pecans, Brazil nuts, etc.
-            'celery',
-            'mustard',
-            'sesame',
-            'sulfites',     // Sulfur dioxide and sulfites
-            'lupin',
-            'molluscs'      // Mussels, oysters, squid, snails
-        ]
+        required: true
+    },
+    label: {
+        type: String,
+        required: true
+    },
+    isWarning: {
+        type: Boolean
     }
 }, { _id: false });
 

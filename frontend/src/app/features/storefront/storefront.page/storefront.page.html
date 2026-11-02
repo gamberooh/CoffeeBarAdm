@@ -1,1 +1,31 @@
-<p>storefront.page works!</p>
+<!-- src/app/features/storefront/pages/storefront-page/storefront-page.component.html -->
+<app-header logoUrl="https://lh3.googleusercontent.com/aida/AEtjO1WHC8bWWatOm-jbeyM0BRxZ7MdjVVayxkg7bJPyCfFPGqmWjox5ib5Wt9kebE-THzE9fLYH1uFfWNhrZVWbViuHzdW4oG6-1gVYrKkIezcMA66IU35HqWrwVVDX2r1KtY0TlfCMXMqmgHZJVWNM_NqjCFEbqdS_bd5u4_wuKF38o3iyG0uw4Z7IfKKNh7XdnHwz5Q2veg6wNZCLY0pA6eu-oF5VRpHHbZnoL9_UL4Y0" />
+
+<main class="max-w-7xl mx-auto px-6 md:px-8 py-8 space-y-12">
+  <app-hero-banner 
+    [featuredProduct]="allProducts()[0]" 
+    (orderFeatured)="onAddToCart($event)" />
+
+  <app-filter-bar 
+    [categories]="categories()" 
+    [activeCategory]="selectedCategory()"
+    (categoryChange)="selectedCategory.set($event)"
+    (searchChange)="searchQuery.set($event)"
+    (nonAlcoholicToggle)="nonAlcoholicOnly.set($event)" />
+
+  <section class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+    @for (product of filteredProducts(); track product.id) {
+      <app-product-card 
+        [product]="product" 
+        (addToCart)="onAddToCart($event)"
+        (viewDetails)="onViewDetails($event)" />
+    } @empty {
+      <div class="col-span-full text-center py-12">
+        <p class="text-body-lg text-on-surface-variant">No products found for selected filters.</p>
+      </div>
+    }
+  </section>
+</main>
+
+<app-footer />
+<app-cart-tray />

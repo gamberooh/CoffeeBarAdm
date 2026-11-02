@@ -1,36 +1,55 @@
 import mongoose from 'mongoose';
 import { IngredientSchema } from './submodel/IngredientSchema';
+import AllergenSchema, { type IBeverageAllergen } from './submodel/AllergenSchema';
+import type { IBeverageIngredient } from './submodel/IngredientSchema';
 
-export interface IBeverageIngredient {
-    name: string;
-    brand: string;
-}
+export type CategoryId = 'all' | 'beverages' | 'cakes' | 'cookies' | 'sandwiches';
 
 export interface IBeverageDocument {
-    name: string;
-    description?: string;
+    title: string;
+    description: string;
     price: number;
-    alcoholic: boolean;
+    imageUrl: string;
+    category: CategoryId;
+    categoryLabel: string;
     ingredients: IBeverageIngredient[];
+    allergens: IBeverageAllergen[];
 }
 
 const beverageSchema = new mongoose.Schema<IBeverageDocument>({
-    name: {
+    title: {
         type: String,
         required: true
     },
     description: {
-        type: String
+        type: String,
+        required: true
     },
     price: {
         type: Number,
         required: true
     },
-    alcoholic: {
-        type: Boolean,
+    imageUrl: {
+        type: String,
         required: true
     },
-    ingredients: [IngredientSchema]
+    category: {
+        type: String,
+        required: true,
+        enum: ['all', 'beverages', 'cakes', 'cookies', 'sandwiches']
+    },
+    categoryLabel: {
+        type: String,
+        required: true
+    },
+    ingredients: {
+        type: [IngredientSchema],
+        required: true
+    },
+    allergens: {
+        type: [AllergenSchema],
+        required: true
+    }
 });
 
 export const Beverage = mongoose.model<IBeverageDocument>('Beverage', beverageSchema);
