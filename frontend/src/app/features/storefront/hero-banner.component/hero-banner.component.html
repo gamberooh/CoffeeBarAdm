@@ -1,1 +1,35 @@
-<p>hero-banner.component works!</p>
+<!-- src/app/features/storefront/components/hero-banner/hero-banner.component.html -->
+<section class="bg-surface-container rounded-xl border-[1.5px] border-[#272728] shadow-[0px_4px_0px_#272728] p-6 md:p-10 relative overflow-hidden">
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center relative z-10">
+    <div class="lg:col-span-7 space-y-4">
+      <div class="inline-flex items-center gap-2 bg-surface px-3 py-1.5 rounded-full border border-[#272728]">
+        <span class="w-2.5 h-2.5 rounded-full bg-secondary animate-pulse"></span>
+        <span class="text-label-sm text-secondary uppercase font-bold tracking-wider">Now Roasting & Freshly Baking</span>
+      </div>
+      <h1 class="text-headline-xl md:text-display-lg font-extrabold text-primary tracking-tight leading-tight">{{ title() }}</h1>
+      <p class="text-body-lg text-on-surface-variant max-w-xl">{{ subtitle() }}</p>
+    </div>
+
+    @if (featuredProduct(); as prod) {
+      <div class="lg:col-span-5">
+        <div class="bg-surface rounded-xl border border-[#272728] p-5 shadow-[0px_3px_0px_#272728] space-y-4">
+          <div class="flex items-center justify-between pb-2 border-b-2 border-dotted border-[#272728]/25">
+            <span class="text-label-md font-bold text-primary">Chef's Special Pairing of the Week!</span>
+            <span class="bg-[#E76F51] text-white text-label-sm px-2.5 py-0.5 rounded-full border border-[#272728]">Special Offer</span>
+          </div>
+          <div class="flex gap-4 items-center">
+            <img [src]="prod.imageUrl" [alt]="prod.title" class="w-24 h-24 rounded-xl border border-[#272728] object-cover" />
+            <div>
+              <h3 class="text-headline-md font-bold text-primary">{{ prod.title }}</h3>
+              <p class="text-body-sm text-on-surface-variant">{{ prod.description }}</p>
+              <span class="text-headline-md font-extrabold text-primary">${{ prod.price.toFixed(2) }}</span>
+            </div>
+          </div>
+          <button (click)="orderFeatured.emit(prod)" class="w-full py-2.5 bg-secondary text-white rounded-full border border-[#272728] shadow-[0px_3px_0px_#272728] active:translate-y-0.5 font-bold">
+            Order Special Pairing Combo
+          </button>
+        </div>
+      </div>
+    }
+  </div>
+</section>
