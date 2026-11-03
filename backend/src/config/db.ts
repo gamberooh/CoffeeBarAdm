@@ -1,19 +1,16 @@
 import mongoose from 'mongoose';
 
 export function getMongoUri(): string {
-  // if (process.env.DB_URI) return process.env.DB_URI;
-  // if (process.env.MONGO_URI) return process.env.MONGO_URI;
+  const host = process.env.MONGO_HOST?.toString().trim();
+  const port = process.env.MONGO_PORT?.toString().trim();
+  const db = process.env.MONGO_DATABASE?.toString().trim();
+  const user = process.env.MONGO_USER?.toString().trim();
+  const pass = process.env.MONGO_PASSWORD?.toString().trim();
 
-  const host = process.env.MONGO_HOST;
-  const port = process.env.MONGO_PORT;
-  const db = process.env.MONGO_DATABASE;
-  const user = process.env.MONGO_USER;
-  const pass = process.env.MONGO_PASSWORD;
-
-  if (user && pass) {
-    return `mongodb://${encodeURIComponent(user)}:${encodeURIComponent(pass)}@${host}:${port}/${db}`;
-    // return `mongodb://${encodeURIComponent(user)}:${encodeURIComponent(pass)}@${host}:${port}/${db}?authSource=admin`;
-  }
+  // if (user && pass) {
+  //   return `mongodb://${encodeURIComponent(user)}:${encodeURIComponent(pass)}@${host}:${port}/${db}`;
+  //   // return `mongodb://${encodeURIComponent(user)}:${encodeURIComponent(pass)}@${host}:${port}/${db}?authSource=admin`;
+  // }
   return `mongodb://${host}:${port}/${db}`;
 }
 

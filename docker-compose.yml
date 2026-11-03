@@ -2,6 +2,8 @@ services:
   mongo_coffeebar:
     image: mongo:7.0
     container_name: mean-db
+    env_file:
+      - .env
     environment:
       MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
@@ -18,8 +20,7 @@ services:
     env_file:
       - .env
     environment:
-      - MONGO_URI=mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}/${MONGO_DATABASE}?authSource=admin
-      # - MONGO_URI=mongodb://@${MONGO_HOST}:${MONGO_PORT}/${MONGO_DATABASE}
+      - MONGO_URI=mongodb://@${MONGO_HOST}:${MONGO_PORT}/${MONGO_DATABASE}
     ports:
       - "3000:3000"
     volumes:
