@@ -1,7 +1,7 @@
 [
   {
     "title": "Cappuccino ADM",
-    "description": "Espresso with steamed milk and a smooth layer of foam.",
+    "description": "Espresso con latte montato a vapore e un soffice strato di schiuma.",
     "price": 3.8,
     "imageUrl": "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f",
     "category": "beverages",
@@ -64,6 +64,62 @@
     ]
   },
   {
+    "title": "Espresso ADM",
+    "description": "Un caffè espresso intenso e aromatico con crema vellutata.",
+    "price": 1.5,
+    "imageUrl": "https://images.unsplash.com/photo-1510591509098-f4fdc6d0ff04",
+    "category": "beverages",
+    "categoryLabel": "Caffetteria",
+    "ingredients": [
+      {
+        "id": "espresso",
+        "name": "Espresso",
+        "description": "Miscela di caffè ADM appena macinata.",
+        "brand": "ADM Coffee"
+      }
+    ],
+    "allergens": []
+  },
+  {
+    "title": "Torta della Nonna",
+    "description": "Frolla fragrante ripiena di crema pasticcera e copertura di pinoli.",
+    "price": 4.5,
+    "imageUrl": "https://images.unsplash.com/photo-1578985545062-69928b1d9587",
+    "category": "cakes",
+    "categoryLabel": "Pasticceria",
+    "ingredients": [
+      {
+        "id": "flour",
+        "name": "Farina di frumento",
+        "description": "Farina di grano tenero.",
+        "brand": "ADM Bakery"
+      },
+      {
+        "id": "custard",
+        "name": "Crema pasticcera",
+        "description": "Crema fresca alla vaniglia.",
+        "brand": "ADM Bakery"
+      }
+    ],
+    "allergens": [
+      {
+        "id": "gluten",
+        "label": "Glutine",
+        "isWarning": true
+      },
+      {
+        "id": "eggs",
+        "label": "Uova",
+        "isWarning": true
+      },
+      {
+        "id": "milk",
+        "label": "Latte",
+        "isWarning": true
+      }
+    ]
+  },
+  {
     "title": "Cookie al cioccolato",
     "description": "Cookie morbido con gocce di cioccolato fondente.",
     "price": 2.9,
@@ -82,6 +138,75 @@
         "name": "Cioccolato fondente",
         "description": "Gocce di cioccolato fondente.",
         "brand": "ADM Bakery"
+      }
+    ],
+    "allergens": [
+      {
+        "id": "gluten",
+        "label": "Glutine",
+        "isWarning": true
+      },
+      {
+        "id": "eggs",
+        "label": "Uova",
+        "isWarning": true
+      }
+    ]
+  },
+  {
+    "title": "Cookie all'avena",
+    "description": "Cookie rustico con fiocchi d'avena e mirtilli rossi disidratati.",
+    "price": 3.0,
+    "imageUrl": "https://images.unsplash.com/photo-1558961363-fa8fdf82db35",
+    "category": "cookies",
+    "categoryLabel": "Pasticceria",
+    "ingredients": [
+      {
+        "id": "oats",
+        "name": "Fiocchi d'avena",
+        "description": "Avena integrale selezionata.",
+        "brand": "ADM Bakery"
+      },
+      {
+        "id": "cranberries",
+        "name": "Mirtilli rossi",
+        "description": "Mirtilli rossi dolci essiccati.",
+        "brand": "ADM Bakery"
+      }
+    ],
+    "allergens": [
+      {
+        "id": "gluten",
+        "label": "Glutine",
+        "isWarning": true
+      }
+    ]
+  },
+  {
+    "title": "Club Sandwich ADM",
+    "description": "Pane tostato, pollo grigliato, bacon croccante, insalata e maionese.",
+    "price": 6.8,
+    "imageUrl": "https://images.unsplash.com/photo-1528735602780-2552fd46c7af",
+    "category": "sandwiches",
+    "categoryLabel": "Panini",
+    "ingredients": [
+      {
+        "id": "bread",
+        "name": "Pane in cassetta",
+        "description": "Pane morbido tostato.",
+        "brand": "ADM Bakery"
+      },
+      {
+        "id": "chicken",
+        "name": "Pollo grigliato",
+        "description": "Petto di pollo cotto alla griglia.",
+        "brand": "ADM Fresh"
+      },
+      {
+        "id": "bacon",
+        "name": "Bacon",
+        "description": "Pancetta croccante.",
+        "brand": "ADM Fresh"
       }
     ],
     "allergens": [
