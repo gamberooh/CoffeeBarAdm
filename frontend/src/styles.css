@@ -1,13 +1,117 @@
-/* You can add global styles to this file, and also import other style files */
-
 @import 'tailwindcss';
 
-:root {
-  --primary: #6f4e37;
-  --primary-foreground: #ffffff;
+/* 1. Importa i font Google necessari */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@400&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap');
+
+@theme {
+  /* 2. Mappatura completa dei colori da Google Stitch */
+  --color-surface: #fff8f0;
+  --color-surface-dim: #e6d9ba;
+  --color-surface-bright: #fff8f0;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #fff3d5;
+  --color-surface-container: #faedcd;
+  --color-surface-container-high: #f4e7c8;
+  --color-surface-container-highest: #eee2c2;
+  --color-on-surface: #211b08;
+  --color-on-surface-variant: #45474a;
+  --color-inverse-surface: #37301b;
+  --color-inverse-on-surface: #fdf0d0;
+  --color-outline: #76777a;
+  --color-outline-variant: #c6c6ca;
+  --color-surface-tint: #5f5e5f;
+  
+  --color-primary: #121313;
+  --color-on-primary: #ffffff;
+  --color-primary-container: #272728;
+  --color-on-primary-container: #8f8e8f;
+  --color-inverse-primary: #c8c6c7;
+  
+  --color-secondary: #486459;
+  --color-on-secondary: #ffffff;
+  --color-secondary-container: #c8e7d9;
+  --color-on-secondary-container: #4d685e;
+  
+  --color-tertiary: #200e00;
+  --color-on-tertiary: #ffffff;
+  --color-tertiary-container: #3c2000;
+  --color-on-tertiary-container: #b38558;
+  
+  --color-error: #ba1a1a;
+  --color-on-error: #ffffff;
+  --color-error-container: #ffdad6;
+  --color-on-error-container: #93000a;
+  
+  --color-surface-variant: #eee2c2;
 }
 
-@theme inline {
-  --color-primary: var(--primary);
-  --color-primary-foreground: var(--primary-foreground);
+/* 3. Definizione della tipografia tramite le Utility di Tailwind v4 */
+@utility text-display-lg {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 48px;
+  font-weight: 800;
+  line-height: 56px;
+}
+
+@utility text-headline-xl {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 40px;
+}
+
+@utility text-headline-lg {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 32px;
+}
+
+@utility text-headline-md {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 28px;
+}
+
+@utility text-body-lg {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 28px;
+}
+
+@utility text-body-md {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 24px;
+}
+
+@utility text-body-sm {
+  font-family: 'Nunito Sans', sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 20px;
+}
+
+@utility text-label-lg {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 20px;
+}
+
+@utility text-label-md {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+@utility text-label-sm {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 16px;
 }

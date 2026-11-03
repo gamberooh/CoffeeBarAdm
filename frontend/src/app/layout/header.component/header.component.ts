@@ -11,5 +11,5 @@ export class HeaderComponent {
   readonly cartService = inject(CartService);
 
   readonly brandName = input<string>('Coffee Bar ADM');
-  readonly logoUrl = input<string>('');
+  readonly logoUrl = input<string>('/images/logo.png');
 }
