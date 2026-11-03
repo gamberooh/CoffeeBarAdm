@@ -1,5 +1,5 @@
 services:
-  mongo_coffeebar:
+  mongo:
     image: mongo:7.0
     container_name: mean-db
     env_file:
@@ -13,23 +13,23 @@ services:
     volumes:
       - mongo-data:/data/db
 
-  backend_coffeebar:
+  backend:
     build:
       context: ./backend
     container_name: mean-backend
     env_file:
       - .env
     environment:
-      - MONGO_URI=mongodb://@${MONGO_HOST}:${MONGO_PORT}/${MONGO_DATABASE}
+      - MONGO_URI=mongodb://${MONGO_HOST}:${MONGO_PORT}/${MONGO_DATABASE}
     ports:
-      - "3000:3000"
+      - "8000:8000"
     volumes:
       - ./backend:/app
       - /app/node_modules
     depends_on:
-      - mongo_coffeebar
+      - mongo
 
-  frontend_coffeebar:
+  frontend:
     build:
       context: ./frontend
     container_name: mean-frontend
@@ -39,7 +39,7 @@ services:
       - ./frontend:/app
       - /app/node_modules
     depends_on:
-      - backend_coffeebar
+      - backend
 
 volumes:
   mongo-data:

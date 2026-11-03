@@ -1,0 +1,62 @@
+<!-- src/app/features/product-detail/components/product-info/product-info.component.html -->
+<div class="rounded-xl bg-[#FFFFFF] p-6 border-[1.5px] border-[#272728] shadow-[0px_4px_0px_#272728]">
+  <div class="flex flex-wrap items-center justify-between gap-3 mb-3">
+    <span class="text-label-md px-3 py-1 bg-[#C8E7D9] text-[#4D685E] rounded-full font-bold inline-flex items-center gap-1.5 border border-[#486459]/30">
+      <span class="material-symbols-outlined text-[16px]">local_cafe</span>
+      Coffee bar ADM Reserve Item
+    </span>
+    <!-- Review -->
+    <!-- <div class="flex items-center gap-1.5 text-label-md font-bold text-[#121313] bg-[#FAEDCD] px-3 py-1 rounded-full border border-[#121313]/15">
+      <span class="material-symbols-filled text-[#E76F51] text-[18px]">star</span>
+      <strong class="font-bold">{{ rating() }}</strong>
+      <span class="text-[#45474A]">({{ reviewCount() }} reviews)</span>
+    </div> -->
+  </div>
+
+  <h1 class="text-headline-xl lg:text-display-lg font-extrabold text-[#121313] tracking-tight mb-2">{{ title() }}</h1>
+
+  <div class="flex items-center justify-between py-2 border-b border-[#121313]/10">
+    <div class="flex items-baseline gap-2">
+      <span class="text-headline-xl font-extrabold text-[#121313]">${{ price().toFixed(2) }}</span>
+      <span class="text-body-sm text-[#45474A]">/ 12 oz standard</span>
+    </div>
+    
+    <!-- Stepper Quantità -->
+    <div class="flex items-center bg-[#FAEDCD] rounded-full border-[1.5px] border-[#272728] p-1 shadow-sm">
+      <button (click)="quantityChange.emit(-1)" class="w-8 h-8 rounded-full bg-[#FFF8F0] flex items-center justify-center text-[#121313] font-bold hover:bg-white active:scale-95 transition-all">
+        <span class="material-symbols-outlined text-[18px]">remove</span>
+      </button>
+      <span class="w-9 text-center font-bold text-label-lg text-[#121313]">{{ quantity() }}</span>
+      <button (click)="quantityChange.emit(1)" class="w-8 h-8 rounded-full bg-[#FFF8F0] flex items-center justify-center text-[#121313] font-bold hover:bg-white active:scale-95 transition-all">
+        <span class="material-symbols-outlined text-[18px]">add</span>
+      </button>
+    </div>
+  </div>
+
+  <p class="text-body-md text-[#45474A] mt-4 leading-relaxed">{{ description() }}</p>
+
+  <!-- Schema Alcolico -->
+  <!-- @if(isAlcoholic()) {
+    <div class="mt-5 p-4 rounded-xl bg-[#FAEDCD] border-[1.5px] border-[#272728] flex flex-col gap-3">
+      <div class="flex flex-wrap items-center justify-between gap-2">
+        <div class="flex items-center gap-2">
+          <span class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full bg-[#E76F51] text-white text-label-md font-bold shadow-sm border border-[#272728]">
+            <span class="material-symbols-outlined text-[18px]">wine_bar</span>
+            Alcoholic: Yes (17% ABV Liqueur infusion)
+          </span>
+          <span class="text-label-sm font-bold bg-[#FFF8F0] text-[#121313] px-2.5 py-1 rounded-full border border-[#121313]/20">
+            21+ ID Required
+          </span>
+        </div>
+        <label class="inline-flex items-center gap-2 cursor-pointer select-none">
+          <span class="text-label-sm font-semibold text-[#211B08]">Virgin/Zero-Proof?</span>
+          <input (change)="virginToggle.emit($any($event.target).checked)" type="checkbox" class="rounded border-[#121313]/30 text-[#486459] focus:ring-[#486459] w-4 h-4 cursor-pointer" />
+        </label>
+      </div>
+      <p class="text-body-sm text-[#45474A] flex items-start gap-1.5">
+        <span class="material-symbols-outlined text-[18px] text-[#E76F51] mt-0.5">info</span>
+        <span><strong>Compliance Notice:</strong> This beverage contains real distilled spirits. Valid government photo identification verifying 21+ years of age must be presented upon counter collection or table service. Zero-proof option utilizes alcohol-free Irish cream extract.</span>
+      </p>
+    </div>
+  } -->
+</div>

@@ -1,7 +1,7 @@
-import express, { type Express } from 'express';
 import cors from 'cors';
-import helmet from 'helmet';
+import express, { type Express } from 'express';
 import rateLimit from 'express-rate-limit';
+import helmet from 'helmet';
 
 export default function setupMiddlewares(app: Express): void {
   // per Nginx del lab, serve per https
@@ -15,8 +15,7 @@ export default function setupMiddlewares(app: Express): void {
 
   // CORS
   const allowedOrigins = [
-    // 'http://localhost:4200', //angular default
-    'http://localhost:35841', //frontend angular
+    'http://localhost:4200', //angular default
     'http://localhost:8000' //backend
   ];
 

@@ -11,7 +11,7 @@ import { Observable } from 'rxjs';
 export class ProductService {
   
   private readonly http = inject(HttpClient);
-  private readonly API_URL = `/api/beverage`;
+  private readonly API_URL = '/api/product';
   
   getAll(): Observable<ProductResponse[]> {
     return this.http.get<ProductResponse[]>(this.API_URL);
@@ -22,7 +22,7 @@ export class ProductService {
   }
 
   getByName(name: string): Observable<ProductResponse> {
-    return this.http.get<ProductResponse>(`${this.API_URL}/by-name/${name}`)
+    return this.http.get<ProductResponse>(`${this.API_URL}/by-name/${encodeURIComponent(name)}`);
   }
 
   searchByName(name: string): Observable<ProductResponse[]> {

@@ -1,0 +1,57 @@
+<!-- src/app/features/product-detail/components/customization-options/customization-options.component.html -->
+<div class="rounded-xl bg-[#FFF3D5] p-6 border-[1.5px] border-[#272728] shadow-[0px_4px_0px_#272728] flex flex-col gap-5">
+    <div class="flex flex-col gap-4">
+        <!-- Add to Cart CTA (In the design it's placed inside this block) -->
+        <div class="flex items-center justify-between bg-surface-bright p-3 rounded-xl border border-primary/20">
+            <div>
+                 <div class="text-label-sm font-bold uppercase tracking-wider text-on-surface-variant">Estimated Wait</div>
+                 <div class="text-label-lg font-bold text-primary flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-secondary"></span> 4 - 6 mins (Counter Pickup)</div>
+            </div>
+            <button class="px-6 py-2.5 bg-primary-container text-surface-container rounded-full border border-primary shadow-[0px_3px_0px_#272728] font-bold text-label-lg flex items-center gap-2 active:translate-y-0.5 transition-transform">
+                <span class="material-symbols-outlined text-[20px]">add_shopping_cart</span>
+                Add to Cart • $7.50
+            </button>
+        </div>
+
+        <!-- Milk Selection -->
+        <div>
+            <label class="block text-label-md font-bold text-primary mb-2">1. Select Milk Base</label>
+            <div class="grid grid-cols-2 sm:grid-cols-4 gap-2">
+                <button (click)="optionChanged.emit({group: 'milk', option: 'whole'})" [class]="selectedOptions()['milk'] === 'whole' ? 'bg-secondary text-white border-primary shadow-sm' : 'bg-surface text-on-surface border-primary/30 hover:bg-surface-variant'" class="py-2 px-3 rounded-full text-label-md font-bold border-[1.5px] flex items-center justify-center gap-1.5 transition-colors">
+                    @if (selectedOptions()['milk'] === 'whole') { <span class="material-symbols-outlined text-[16px]">check_circle</span> }
+                    Whole (Dairy)
+                </button>
+                <button (click)="optionChanged.emit({group: 'milk', option: 'oat'})" [class]="selectedOptions()['milk'] === 'oat' ? 'bg-secondary text-white border-primary shadow-sm' : 'bg-surface text-on-surface border-primary/30 hover:bg-surface-variant'" class="py-2 px-3 rounded-full text-label-md font-bold border-[1.5px] flex items-center justify-center gap-1.5 transition-colors">
+                     @if (selectedOptions()['milk'] === 'oat') { <span class="material-symbols-outlined text-[16px]">check_circle</span> }
+                    Oat Milk (+$0.75)
+                </button>
+                <!-- Altre opzioni omesse per brevità, seguono la stessa logica -->
+                 <button class="py-2 px-3 rounded-full text-label-md font-bold border-[1.5px] border-primary/30 bg-surface text-on-surface">Almond Milk</button>
+                 <button class="py-2 px-3 rounded-full text-label-md font-bold border-[1.5px] border-primary/30 bg-surface text-on-surface">Organic Soy</button>
+            </div>
+        </div>
+
+        <!-- Sweetness Selection -->
+        <div>
+             <label class="block text-label-md font-bold text-primary mb-2">2. Sweetness Intensity</label>
+             <div class="grid grid-cols-3 gap-2">
+                  <button class="py-2 px-3 rounded-full text-label-md font-bold border-[1.5px] border-primary/30 bg-surface text-on-surface text-center">0% (Unsweetened)</button>
+                  <button class="py-2 px-3 rounded-full text-label-md font-bold border-[1.5px] border-primary/30 bg-surface text-on-surface text-center">50% (Subtle Sweet)</button>
+                  <button class="py-2 px-3 rounded-full text-label-md font-bold border-[1.5px] border-primary bg-secondary text-white shadow-sm text-center">100% (Standard Recipe)</button>
+             </div>
+        </div>
+
+        <!-- Serving Temperature -->
+        <div>
+             <label class="block text-label-md font-bold text-primary mb-2">3. Serving Temperature</label>
+             <div class="grid grid-cols-2 gap-3">
+                  <button class="py-2.5 px-4 rounded-full text-label-md font-bold border-[1.5px] border-primary bg-secondary text-white shadow-sm flex items-center justify-center gap-2">
+                      <span class="material-symbols-outlined text-[18px]">local_fire_department</span> Steaming Hot (155°F)
+                  </button>
+                  <button class="py-2.5 px-4 rounded-full text-label-md font-bold border-[1.5px] border-primary/30 bg-surface text-on-surface flex items-center justify-center gap-2">
+                      <span class="material-symbols-outlined text-[18px]">ac_unit</span> Over Hand-Cut Ice
+                  </button>
+             </div>
+        </div>
+    </div>
+</div>

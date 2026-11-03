@@ -1,0 +1,58 @@
+<!-- src/app/features/product-detail/components/product-gallery/product-gallery.component.html -->
+<div class="flex flex-col gap-4">
+  <!-- Immagine Principale -->
+  <div class="rounded-xl bg-[#FAEDCD] p-4 md:p-6 relative overflow-hidden flex flex-col items-center border-[1.5px] border-[#272728] shadow-[0px_4px_0px_#272728]">
+    <div class="w-full flex items-center justify-between z-10 mb-2">
+       <!-- @if (isAlcoholic()) {
+          <span class="bg-[#E76F51] text-white text-label-sm px-3 py-1 rounded-full border-[1.5px] border-[#272728] flex items-center gap-1 shadow-sm font-bold">
+            <span class="material-symbols-outlined text-[16px]">local_bar</span>
+            Alcoholic Specialty
+          </span>
+       } @else {
+           <span></span>
+       }
+       -->
+       <span></span>
+      <!-- Favorite toggling needs the favorite state to be added to ProductResponse.
+      <button (click)="favoriteToggled.emit(!isFavorite())" [class]="isFavorite() ? 'text-[#E76F51]' : 'text-[#121313]'" class="w-9 h-9 rounded-full bg-[#FFF8F0] border-[1.5px] border-[#272728] flex items-center justify-center hover:text-[#ba1a1a] transition-colors" title="Save to Favorites">
+        <span class="material-symbols-outlined text-[20px]">{{ isFavorite() ? 'favorite' : 'favorite_border' }}</span>
+      </button> -->
+    </div>
+    
+    <!-- Area Immagine -->
+    <div class="w-full aspect-square rounded-xl bg-[#F4F1DE] border-[1.5px] border-[#272728] flex items-center justify-center p-4 relative overflow-hidden group">
+      <img [src]="selectedImage()" [alt]="imageAlt()" class="w-full h-full object-contain drop-shadow-md transition-transform duration-300 group-hover:scale-105" />
+      <div class="absolute bottom-3 left-3 bg-surface/90 backdrop-blur-sm px-2.5 py-1 rounded-full border border-primary/20 text-label-sm font-bold flex items-center gap-1.5 text-on-surface">
+        <span class="w-2 h-2 rounded-full bg-secondary animate-pulse"></span>
+        Freshly Brewed to Order
+      </div>
+    </div>
+    
+    <!-- Miniature -->
+    <!-- @if (thumbnails().length > 0) {
+        <div class="grid grid-cols-4 gap-3 w-full mt-4">
+            @for (thumb of thumbnails(); track thumb) {
+                <button (click)="selectedImage.set(thumb)" [class]="selectedImage() === thumb ? 'border-[#121313] ring-2 ring-[#486459]' : 'border-[#121313]/40 hover:border-[#121313] opacity-80 hover:opacity-100'" class="rounded-lg bg-[#FFF8F0] p-1 border-[1.5px] transition-all overflow-hidden">
+                    <img [src]="thumb" alt="Thumbnail" class="w-full aspect-square object-contain" />
+                </button>
+            }
+        </div>
+    } -->
+  </div>
+
+  <!-- Note del Barista -->
+  <!-- <div class="rounded-xl bg-[#FFF3D5] p-5 border-[1.5px] border-[#272728] shadow-[0px_4px_0px_#272728]">
+    <div class="flex items-center gap-2 text-headline-md font-bold text-[#121313] mb-2">
+      <span class="material-symbols-outlined text-[#486459]">coffee_maker</span>
+      <span>Barista Tasting Notes</span>
+    </div>
+    <p class="text-body-sm text-[#45474A] leading-relaxed">
+      "We balance the robust caramel and hazelnut body of our house ADM espresso roast with genuine Irish cream liqueur. The gentle warmth of 17% ABV cuts smoothly through velvety steamed dairy, leaving notes of toasted sugar, vanilla pod, and spiced cocoa."
+    </p>
+    <div class="mt-3 pt-3 border-t border-[#121313]/10 flex items-center justify-between text-label-sm font-bold text-[#45474A]">
+      <span>Roast Level: <strong class="text-[#121313] font-bold">Medium-Dark</strong></span>
+      <span>Brew Temp: <strong class="text-[#121313] font-bold">198°F</strong></span>
+      <span>Caffeine: <strong class="text-[#121313] font-bold">135mg</strong></span>
+    </div>
+  </div> -->
+</div>

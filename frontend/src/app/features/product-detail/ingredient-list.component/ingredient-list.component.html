@@ -1,0 +1,57 @@
+<!-- src/app/features/product-detail/components/ingredients-list/ingredients-list.component.html -->
+<div class="flex flex-col gap-6">
+  <!-- Ingredients -->
+  <div class="rounded-xl bg-[#FFFFFF] p-6 border-[1.5px] border-[#272728] shadow-[0px_4px_0px_#272728]">
+    <div class="flex items-center justify-between mb-4">
+      <div>
+        <h2 class="text-headline-md font-bold text-[#121313] flex items-center gap-2">
+          <span class="material-symbols-outlined text-[#486459]">menu_book</span>
+          Curated Ingredients
+        </h2>
+        <span class="text-label-sm font-mono text-[#45474A]">Schema: Ingredient[] {{'{'}} name: string; brand: string {{'}'}}</span>
+      </div>
+      <span class="px-2.5 py-1 bg-[#FAEDCD] rounded-full text-label-sm font-bold text-[#121313] border border-[#121313]/10">{{ ingredients().length }} Pure Elements</span>
+    </div>
+
+    <div class="divide-y-2 divide-dotted divide-[#121313]/20">
+      @for (ing of ingredients(); track ing.id; let i = $index) {
+        <div class="py-3 flex items-center justify-between">
+          <div class="flex items-center gap-3">
+            <span class="w-8 h-8 rounded-full bg-[#FAEDCD] flex items-center justify-center text-[#121313] text-label-md font-bold">{{ i + 1 }}</span>
+            <div>
+              <div class="text-label-lg font-bold text-[#121313]">{{ ing.name }}</div>
+              <div class="text-body-sm text-[#45474A]">{{ ing.description }}</div>
+            </div>
+          </div>
+          <span class="px-3 py-1 bg-[#F4E7C8] rounded-full text-label-md font-bold text-[#486459] border border-[#486459]/20">{{ ing.brand }}</span>
+        </div>
+      }
+    </div>
+  </div>
+
+  <!-- Allergens -->
+  <div class="rounded-xl bg-[#FAEDCD] p-6 border-[1.5px] border-[#272728] shadow-[0px_4px_0px_#272728]">
+    <div class="flex items-center justify-between mb-3">
+      <div class="flex items-center gap-2">
+        <span class="material-symbols-outlined text-[#ba1a1a]">warning</span>
+        <h2 class="text-headline-md font-bold text-[#121313]">Allergen Information & Advisory</h2>
+      </div>
+       <span class="text-label-sm font-mono text-[#45474A]">interface Allergen {{'{'}} categories: string[] {{'}'}}</span>
+    </div>
+
+    <div class="flex flex-wrap gap-2.5 my-3">
+      @for (allergen of allergens(); track allergen.id) {
+        <span class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#FFF8F0] border-[1.5px] border-[#272728] text-label-md font-bold text-[#121313]">
+          <span class="material-symbols-outlined text-[18px] text-[#486459]">
+            {{ allergen.isWarning ? 'warning' : 'info' }}
+          </span>
+          {{ allergen.label }}
+        </span>
+      }
+    </div>
+
+    <div class="mt-4 p-3.5 rounded-lg bg-[#FFF8F0]/70 border border-[#121313]/10 text-body-sm text-[#45474A] leading-relaxed">
+      <p><strong>Kitchen Cross-Contamination Disclaimer:</strong> Although equipment is thoroughly purged between crafting orders, our bakery and espresso bar regularly handles tree nuts, soy, gluten, and eggs. Guests with severe or life-threatening food allergies are kindly asked to inform our barista staff prior to checkout.</p>
+    </div>
+  </div>
+</div>
