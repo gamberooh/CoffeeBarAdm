@@ -4,9 +4,9 @@ export function getMongoUri(): string {
   // if (process.env.DB_URI) return process.env.DB_URI;
   // if (process.env.MONGO_URI) return process.env.MONGO_URI;
 
-  const host = process.env.MONGO_HOST || 'mongo_coffebaradm';
-  const port = process.env.MONGO_PORT || '27017';
-  const db = process.env.MONGO_DATABASE || 'coffebar';
+  const host = process.env.MONGO_HOST;
+  const port = process.env.MONGO_PORT;
+  const db = process.env.MONGO_DATABASE;
   const user = process.env.MONGO_USER;
   const pass = process.env.MONGO_PASSWORD;
 

@@ -1,0 +1,44 @@
+services:
+  mongo_coffeebar:
+    image: mongo:7.0
+    container_name: mean-db
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USER}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
+    ports:
+      - "27017:27017"
+    volumes:
+      - mongo-data:/data/db
+
+  backend_coffeebar:
+    build:
+      context: ./backend
+    container_name: mean-backend
+    env_file:
+      - .env
+    environment:
+      - MONGO_URI=mongodb://${MONGO_USER}:${MONGO_PASSWORD}@${MONGO_HOST}:${MONGO_PORT}/${MONGO_DATABASE}?authSource=admin
+      # - MONGO_URI=mongodb://@${MONGO_HOST}:${MONGO_PORT}/${MONGO_DATABASE}
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    depends_on:
+      - mongo_coffeebar
+
+  frontend_coffeebar:
+    build:
+      context: ./frontend
+    container_name: mean-frontend
+    ports:
+      - "4200:4200"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    depends_on:
+      - backend_coffeebar
+
+volumes:
+  mongo-data:

@@ -1,20 +1,13 @@
-# Build stage
-FROM dhi.io/bun:1.x-dev AS build
+FROM oven/bun:latest
 
 WORKDIR /app
+
+# Copiamo prima solo i file delle dipendenze per sfruttare la cache di Docker
 COPY package.json bun.lock ./
-RUN bun install --frozen-lockfile
+RUN bun install
 
-COPY index.ts tsconfig.json ./
-RUN bun build ./index.ts --outdir ./dist --target bun
-
-# Runtime stage
-FROM dhi.io/bun:1.x
-
-WORKDIR /app
-COPY --from=build /app/dist ./dist
-COPY --from=build /app/node_modules ./node_modules
-
-EXPOSE 3000
-CMD ["bun", "run", "dist/index.js"]
-
+# Il codice vero e proprio verrà montato tramite volume dal docker-compose,
+# ma definiamo qui il comando di avvio standard per Angular in Docker.
+# --host 0.0.0.0 è obbligatorio per esporre la porta all'esterno del container.
+# --poll 2000 assicura che il live-reload funzioni attraverso il file system di Docker.
+CMD ["bun", "x", "ng", "serve", "--host", "0.0.0.0", "--poll", "2000"]
