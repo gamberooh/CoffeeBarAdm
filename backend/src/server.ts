@@ -13,8 +13,9 @@ const server = http.createServer(app);
 
 // CHECK PORT VAR
 const PORT = process.env.PORT || 8000;
-const nodeEnv = process.env.NODE_ENV || 'production';
-// L'ordine di ciò che viene registrato in Express è importante, perchè per ogni rotta Express farà proprio in quell'ordine i passaggi
+const nodeEnv = process.env.NODE_ENV;
+// L'ordine di ciò che viene registrato in Express è importante
+// perchè per ogni rotta Express farà proprio in quell'ordine i passaggi
 
 setupMiddlewares(app);
 

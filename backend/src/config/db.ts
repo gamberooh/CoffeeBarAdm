@@ -7,10 +7,11 @@ export function getMongoUri(): string {
   const user = process.env.MONGO_USER?.toString().trim();
   const pass = process.env.MONGO_PASSWORD?.toString().trim();
 
-  // if (user && pass) {
-  //   return `mongodb://${encodeURIComponent(user)}:${encodeURIComponent(pass)}@${host}:${port}/${db}`;
-  //   // return `mongodb://${encodeURIComponent(user)}:${encodeURIComponent(pass)}@${host}:${port}/${db}?authSource=admin`;
-  // }
+  if (user && pass) {
+    const credentials = `${encodeURIComponent(user)}:${encodeURIComponent(pass)}`;
+    return `mongodb://${credentials}@${host}:${port}/${db}?authSource=admin`;
+  }
+
   return `mongodb://${host}:${port}/${db}`;
 }
 

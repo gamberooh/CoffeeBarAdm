@@ -3,7 +3,8 @@
   "module": "/src/server.ts",
   "type": "module",
   "scripts": {
-    "typecheck": "bun check"
+    "typecheck": "bun check",
+    "seed": "bun run seedDb.js"
   },
   "devDependencies": {
     "@types/bun": "latest",

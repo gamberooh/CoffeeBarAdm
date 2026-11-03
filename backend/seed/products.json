@@ -1,0 +1,100 @@
+[
+  {
+    "title": "Cappuccino ADM",
+    "description": "Espresso with steamed milk and a smooth layer of foam.",
+    "price": 3.8,
+    "imageUrl": "https://images.unsplash.com/photo-1570968915860-54d5c301fa9f",
+    "category": "beverages",
+    "categoryLabel": "Caffetteria",
+    "ingredients": [
+      {
+        "id": "espresso",
+        "name": "Espresso",
+        "description": "Miscela di caffè ADM appena macinata.",
+        "brand": "ADM Coffee"
+      },
+      {
+        "id": "milk",
+        "name": "Latte",
+        "description": "Latte fresco intero montato a vapore.",
+        "brand": "Local Dairy"
+      }
+    ],
+    "allergens": [
+      {
+        "id": "milk",
+        "label": "Latte",
+        "isWarning": true
+      }
+    ]
+  },
+  {
+    "title": "Latte alla vaniglia",
+    "description": "Espresso doppio, latte vellutato e sciroppo naturale alla vaniglia.",
+    "price": 4.5,
+    "imageUrl": "https://images.unsplash.com/photo-1461023058943-07fcbe16d735",
+    "category": "beverages",
+    "categoryLabel": "Caffetteria",
+    "ingredients": [
+      {
+        "id": "espresso",
+        "name": "Espresso",
+        "description": "Miscela di caffè ADM appena macinata.",
+        "brand": "ADM Coffee"
+      },
+      {
+        "id": "milk",
+        "name": "Latte",
+        "description": "Latte fresco intero montato a vapore.",
+        "brand": "Local Dairy"
+      },
+      {
+        "id": "vanilla",
+        "name": "Sciroppo alla vaniglia",
+        "description": "Sciroppo artigianale con estratto naturale di vaniglia.",
+        "brand": "ADM House"
+      }
+    ],
+    "allergens": [
+      {
+        "id": "milk",
+        "label": "Latte",
+        "isWarning": true
+      }
+    ]
+  },
+  {
+    "title": "Cookie al cioccolato",
+    "description": "Cookie morbido con gocce di cioccolato fondente.",
+    "price": 2.9,
+    "imageUrl": "https://images.unsplash.com/photo-1499636136210-6f4ee915583e",
+    "category": "cookies",
+    "categoryLabel": "Pasticceria",
+    "ingredients": [
+      {
+        "id": "flour",
+        "name": "Farina di frumento",
+        "description": "Farina di grano tenero.",
+        "brand": "ADM Bakery"
+      },
+      {
+        "id": "chocolate",
+        "name": "Cioccolato fondente",
+        "description": "Gocce di cioccolato fondente.",
+        "brand": "ADM Bakery"
+      }
+    ],
+    "allergens": [
+      {
+        "id": "gluten",
+        "label": "Glutine",
+        "isWarning": true
+      },
+      {
+        "id": "eggs",
+        "label": "Uova",
+        "isWarning": true
+      }
+    ]
+  }
+]
