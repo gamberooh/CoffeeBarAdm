@@ -25,4 +25,4 @@ MONGO_PASSWORD=...
 ```
 These variables are involved both in the backend database configuration `backend/src/config/db.ts` and also in the Docker compose file `docker-compose.yml` to make the db and backend containers be able to expose and connect the database.
 
-| N.B. per popolare il db usare il comando `docker exec -it mean-backend bun run seed` 
+-  N.B. to populate the database with some products run `docker exec -it mean-backend bun run seed` 
