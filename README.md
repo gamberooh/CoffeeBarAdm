@@ -11,7 +11,7 @@ I use [MongoDB](https://www.mongodb.com/) a non-relational DBMS.
 I use Typescript with [Mongoose](https://mongoosejs.com/docs/) Schema difiner and [Express.js](https://expressjs.com/) to expose and define the REST API endpoints.
 
 ### Frontend
-I use [Angular](https://angular.dev/overview): a scalable and mantainable Typescript framowork. 
+I use [Angular](https://angular.dev/overview): a scalable and mantainable Typescript framework. 
 
 ### Environment
 These are the variables used in the `.env` file.
